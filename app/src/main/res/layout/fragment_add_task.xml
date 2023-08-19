@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.adrian.noteapp.ui.viewModel.AddTaskViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_bg"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".ui.fragment.AddTaskFragment">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="34dp"
+            android:layout_height="29dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toTopOf="@+id/guideline6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.625" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.054"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline6" />
+
+        <EditText
+            android:id="@+id/etTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/edit_text"
+            android:inputType="text"
+            android:padding="8dp"
+            android:text="@={viewModel.title}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Description"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.065"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etTitle" />
+
+        <EditText
+            android:id="@+id/etDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/edit_text"
+            android:inputType="textMultiLine"
+            android:padding="8dp"
+            android:gravity="top|left"
+            android:lines="10"
+            android:maxLines="4"
+            android:scrollbars="vertical"
+            android:text="@={viewModel.desc}"
+            app:layout_constraintBottom_toTopOf="@+id/guideline8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.575"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAdd"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/add"
+            android:onClick="@{()-> viewModel.addTask()}"
+            android:text="Add"
+            app:cornerRadius="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline9" />
+
+        <View
+            android:id="@+id/btn_green"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            app:cornerRadius="0dp"
+            android:onClick="@{()-> viewModel.onGreenClicked()}"
+            android:background="@color/green"
+            app:layout_constraintBottom_toTopOf="@+id/guideline9"
+            app:layout_constraintEnd_toStartOf="@+id/btn_blue"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline8" />
+
+        <View
+            android:id="@+id/btn_blue"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@color/blue"
+            app:cornerRadius="0dp"
+            android:onClick="@{()-> viewModel.onBlueClicked()}"
+            app:layout_constraintBottom_toTopOf="@+id/guideline9"
+            app:layout_constraintEnd_toStartOf="@+id/btn_red"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_green"
+            app:layout_constraintTop_toTopOf="@+id/guideline8" />
+
+        <View
+            android:id="@+id/btn_red"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@color/red"
+            android:onClick="@{()-> viewModel.onRedClicked()}"
+            app:cornerRadius="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline9"
+            app:layout_constraintEnd_toStartOf="@+id/btn_purple"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_blue"
+            app:layout_constraintTop_toTopOf="@+id/guideline8" />
+
+        <View
+            android:id="@+id/btn_purple"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@color/purple"
+            app:cornerRadius="0dp"
+            android:onClick="@{()-> viewModel.onPurpleClicked()}"
+            app:layout_constraintBottom_toTopOf="@+id/guideline9"
+            app:layout_constraintEnd_toStartOf="@+id/btn_yellow"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_red"
+            app:layout_constraintTop_toTopOf="@+id/guideline8" />
+
+        <View
+            android:id="@+id/btn_yellow"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@color/yellow"
+            android:onClick="@{()-> viewModel.onYellowClicked()}"
+            app:cornerRadius="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_purple"
+            app:layout_constraintTop_toTopOf="@+id/guideline8" />
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginVertical="32dp"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:paddingHorizontal="20dp"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/guideline8"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/etDesc"-->
+<!--            app:layout_constraintVertical_bias="1.0">-->
+
+<!--            <View-->
+<!--                android:id="@+id/vGreen"-->
+<!--                android:layout_width="32dp"-->
+<!--                android:layout_height="32dp"-->
+<!--                android:layout_marginHorizontal="10dp"-->
+<!--                android:background="@color/green"-->
+<!--                android:clickable="true"-->
+<!--                android:focusable="true" />-->
+
+<!--            <View-->
+<!--                android:id="@+id/vBlue"-->
+<!--                android:layout_width="32dp"-->
+<!--                android:layout_height="32dp"-->
+<!--                android:layout_marginHorizontal="10dp"-->
+<!--                android:background="@color/blue"-->
+<!--                android:clickable="true"-->
+<!--                android:focusable="true" />-->
+
+<!--            <View-->
+<!--                android:id="@+id/vRed"-->
+<!--                android:layout_width="32dp"-->
+<!--                android:layout_height="32dp"-->
+<!--                android:layout_marginHorizontal="10dp"-->
+<!--                android:background="@color/red"-->
+<!--                android:clickable="true"-->
+<!--                android:focusable="true" />-->
+
+<!--            <View-->
+<!--                android:id="@+id/vPurple"-->
+<!--                android:layout_width="32dp"-->
+<!--                android:layout_height="32dp"-->
+<!--                android:layout_marginHorizontal="10dp"-->
+<!--                android:background="@color/purple"-->
+<!--                android:clickable="true"-->
+<!--                android:focusable="true" />-->
+
+<!--            <View-->
+<!--                android:id="@+id/vYellow"-->
+<!--                android:layout_width="32dp"-->
+<!--                android:layout_height="32dp"-->
+<!--                android:layout_marginHorizontal="10dp"-->
+<!--                android:background="@color/yellow"-->
+<!--                android:clickable="true"-->
+<!--                android:focusable="true" />-->
+<!--        </LinearLayout>-->
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7564979" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="658dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
